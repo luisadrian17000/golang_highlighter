@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Go Text Highlighter</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1><span>GO </span>text highlighter</h1>
+    <div class="form-wrapper">
+      <form id="inputForm" class="form-container">
+        <textarea name="inputText" placeholder="Enter Golang code here..."></textarea>
+        <button type="submit">Send</button>
+      </form>
+      <div id="outputForm" class="form-container">
+        <div id="outputText" placeholder="Highlighted text will appear here..." readonly></div>
+      </div>
+    </div>
+    <img src="{{ url_for('static', filename='images/golang.png') }}" alt="Golang character" class="golang-image">
+  </div>
+
+  <script src="{{ url_for('static', filename='JS/index.js') }}"></script>
+
+</body>
+</html>
