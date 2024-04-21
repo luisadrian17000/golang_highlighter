@@ -5,6 +5,14 @@ import golang_rules
 
 app = Flask(__name__)
 
+colors = {
+    "ID" : "#979196",
+    "DIGIT" : "#FF0000",
+    "FUNCTION" : "#F0FF00",
+    "OPERANDS" : "#FF33F0",
+    "carriageReturn" : ""
+    }
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -24,7 +32,11 @@ def process_text():
         tok = lexer.token()
         if not tok:
             break
-        processed_text += f'<span style="color: #FFBF80;">{tok.value}</span>'
+        
+        if tok.type == "carriageReturn":
+            processed_text += f'<span style="color: {colors[tok.type]};">{tok.value}</span><br>'
+        else:
+            processed_text += f'<span style="color: {colors[tok.type]};">{tok.value} </span>'
 
     # Devolver el texto procesado
     return jsonify({'html': processed_text})

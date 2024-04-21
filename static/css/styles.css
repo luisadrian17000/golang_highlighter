@@ -16,6 +16,7 @@ body {
     width: 100%;
   }
   .form-container {
+    font-family: 'Consolas';font-size: 15px;
     background-color: white;
     padding: 20px;
     margin: 10px;

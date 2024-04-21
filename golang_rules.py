@@ -1,18 +1,37 @@
 import ply.lex as lex
 
 tokens = [
-   'OPERANDS'
+    'ID',
+    'DIGIT',
+    'OPERANDS',
+    'FUNCTION',
+    'carriageReturn'
 ]
 
+def t_FUNCTION(t):
+    r'[a-zA-Z_][a-zA-Z_0-9]*\(.*\)'
+    return t
 
+def t_ID(t):
+    
+    r'[a-zA-Z_][a-zA-Z_0-9]*'
+    return t
+
+def t_DIGIT(t):
+    
+    r'\d+'
+    return t
 
 def t_OPERANDS(t):
     
-    r'(\+\+|-=|\+=|/=|%=|\*=|&=|\^=|&\^=|<<=|>>=|!=|==|<=|>=|&&|\|\||<<|>>|->|\.\.\.|::=|\{|\}|\[|\]|\(|\)|\+|-|\*|/|%|!|&|\||\^|&\^|;|:|\.|~)'    
+    r'\s*(\+\+|=|-=|\+=|/=|%=|\*=|&=|\^=|&\^=|<<=|>>=|!=|==|<=|>=|&&|\|\||<<|>>|->|\.\.\.|::=|\{|\}|\[|\]|\(|\)|\+|-|\*|/|%|!|&|\||\^|&\^|;|:|\.|~)+\s*'    
     return t
 
+def t_carriageReturn(t):
+    r'\n'
+    return t
 
-t_ignore  = ' \t'
+# t_ignore  = ' \t'
 
 
 def t_error(t):
