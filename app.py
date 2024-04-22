@@ -1,4 +1,9 @@
-# app.py
+#"""
+# 
+# 
+# 
+# """
+
 from flask import Flask, request, jsonify, render_template
 import ply.lex as lex
 import golang_rules
@@ -8,9 +13,11 @@ app = Flask(__name__)
 colors = {
     "ID" : "#979196",
     "DIGIT" : "#FF0000",
-    "FUNCTION" : "#F0FF00",
+    "FUNCTION" : "#CECB18",
     "OPERANDS" : "#FF33F0",
-    "carriageReturn" : ""
+    "STR" : "#E07515",
+    "CARRIAGERETURN" : "",
+    "SPACE" : ""
     }
 
 @app.route('/')
@@ -33,10 +40,10 @@ def process_text():
         if not tok:
             break
         
-        if tok.type == "carriageReturn":
+        if tok.type == "CARRIAGERETURN":
             processed_text += f'<span style="color: {colors[tok.type]};">{tok.value}</span><br>'
         else:
-            processed_text += f'<span style="color: {colors[tok.type]};">{tok.value} </span>'
+            processed_text += f'<span style="color: {colors[tok.type]};">{tok.value}</span>'
 
     # Devolver el texto procesado
     return jsonify({'html': processed_text})
