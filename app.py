@@ -8,7 +8,7 @@ from flask import Flask, request, jsonify, render_template
 import ply.lex as lex
 import golang_rules
 
-app = Flask(__name__)
+app = Flask(_name_)
 
 colors = {
     "ID" : "#979196",
@@ -17,7 +17,8 @@ colors = {
     "OPERANDS" : "#FF33F0",
     "STR" : "#E07515",
     "CARRIAGERETURN" : "",
-    "SPACE" : ""
+    "SPACE" : "",
+    "KEYWORD" : "#623881"
     }
 
 @app.route('/')
@@ -48,5 +49,5 @@ def process_text():
     # Devolver el texto procesado
     return jsonify({'html': processed_text})
 
-if __name__ == '__main__':
+if _name_ == '_main_':
     app.run(debug=True)
